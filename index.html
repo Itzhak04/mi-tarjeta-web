@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0d14">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Perfil profesional y enlaces interactivos estilo iOS con diseño glassmorphism.">
+  <title>Itzhak Prieto | Perfil Profesional</title>
+
+  <!-- Lucide Icons & QR Code Generator CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- DYNAMIC ANIMATED MESH GRADIENT (iOS VIBE) -->
+  <div class="mesh-background" aria-hidden="true">
+    <div class="mesh-orb orb-1"></div>
+    <div class="mesh-orb orb-2"></div>
+    <div class="mesh-orb orb-3"></div>
+    <div class="mesh-orb orb-4"></div>
+  </div>
+  <div class="mesh-noise" aria-hidden="true"></div>
+
+  <!-- MAIN APP CONTAINER -->
+  <main class="app-viewport">
+
+    <!-- TOP NAVIGATION / ACTIONS -->
+    <header class="top-bar glass-panel">
+      <div class="status-badge">
+        <span class="pulse-dot"></span>
+        <span>Disponible para proyectos</span>
+      </div>
+      <div class="top-actions">
+        <!-- QR Code Trigger -->
+        <button class="icon-btn" id="openQrBtn" title="Mostrar código QR de este perfil" aria-label="Código QR">
+          <i data-lucide="qr-code"></i>
+        </button>
+        <!-- Share Native Trigger -->
+        <button class="icon-btn" id="shareProfileBtn" title="Compartir perfil" aria-label="Compartir perfil">
+          <i data-lucide="share-2"></i>
+        </button>
+        <!-- Dark / Light Theme Toggle -->
+        <button class="icon-btn" id="themeToggleBtn" title="Cambiar tema claro/oscuro" aria-label="Alternar tema">
+          <i data-lucide="sun" id="themeIcon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- PROFILE HERO CARD -->
+    <section class="profile-card glass-panel">
+      <!-- Circular Avatar with Animated Ring -->
+      <div class="avatar-wrapper">
+        <div class="avatar-ring"></div>
+        <div class="avatar-img-container">
+          <img 
+            src="foto de perfil.jpeg" 
+            alt="Foto de perfil de Itzhak Prieto" 
+            class="avatar-img"
+            id="profileAvatar"
+          />
+        </div>
+        <div class="verified-badge" title="Perfil verificado">
+          <i data-lucide="check" style="width: 15px; height: 15px; stroke-width: 3;"></i>
+        </div>
+      </div>
+
+      <!-- User Identification -->
+      <h1 class="profile-name">
+        Itzhak Prieto
+        <i data-lucide="sparkles" style="width: 18px; height: 18px; color: var(--accent-teal);"></i>
+      </h1>
+      <p class="profile-role">Ingeniero Informático</p>
+
+      <div class="profile-location">
+        <i data-lucide="map-pin" style="width: 14px; height: 14px;"></i>
+        <span>Las Palmas de Gran Canaria • Presencial / Remoto</span>
+      </div>
+
+      <!-- PROFILE BIO (Comentado a petición)
+      <p class="profile-bio">
+        Creando aplicaciones web de alto rendimiento con arquitecturas escalables y diseño de interfaz fluido estilo iOS. Apasionado por la estética minimalista y la experiencia de usuario.
+      </p>
+      -->
+
+      <!-- Skills Pills (Extraídas directamente del CV) -->
+      <div class="skills-container">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">Java</span>
+        <span class="skill-pill">JavaScript</span>
+        <span class="skill-pill">C / C++</span>
+        <span class="skill-pill">Angular</span>
+        <span class="skill-pill">Tailwind CSS</span>
+        <span class="skill-pill">Firebase</span>
+        <span class="skill-pill">PostgreSQL</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">Bash / Linux</span>
+        <span class="skill-pill">Git / GitHub</span>
+        <span class="skill-pill">Kotlin</span>
+      </div>
+    </section>
+
+    <!-- QUICK STATS ROW (Comentado a petición)
+    <section class="stats-row" aria-label="Estadísticas profesionales">
+      <div class="stat-card glass-panel">
+        <span class="stat-number">+6</span>
+        <span class="stat-label">Años de Exp.</span>
+      </div>
+      <div class="stat-card glass-panel">
+        <span class="stat-number">+45</span>
+        <span class="stat-label">Proyectos Web</span>
+      </div>
+      <div class="stat-card glass-panel">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Compromiso</span>
+      </div>
+    </section>
+    -->
+
+    <!-- CURRICULUM VITAE (CV) ACTION CARD -->
+    <section class="cv-action-card glass-panel">
+      <div class="cv-header">
+        <div class="cv-icon-box">
+          <i data-lucide="file-text" style="width: 24px; height: 24px;"></i>
+        </div>
+        <div class="cv-info">
+          <h2 class="cv-title">
+            Curriculum Vitae
+            <span class="link-tag">PDF</span>
+          </h2>
+          <p class="cv-subtitle">Historial laboral, habilidades y formación</p>
+        </div>
+      </div>
+
+      <!-- CV Interaction Buttons: Ver CV y Descargar CV -->
+      <div class="cv-buttons-grid">
+        <!-- Button: Ver CV (Abre visor interactivo / pestaña) -->
+        <button type="button" class="cv-btn cv-btn-view" id="viewCvBtn" title="Previsualizar Curriculum Vitae en PDF">
+          <i data-lucide="eye" style="width: 18px; height: 18px;"></i>
+          <span>Ver CV</span>
+        </button>
+
+        <!-- Button: Descargar CV (Descarga directa de CV) -->
+        <a href="Curriculum Vitae - Itzhak Prieto (2).pdf" download="Curriculum Vitae - Itzhak Prieto.pdf" class="cv-btn cv-btn-download" id="downloadCvBtn" title="Descargar Curriculum Vitae en PDF">
+          <i data-lucide="download" style="width: 18px; height: 18px;"></i>
+          <span>Descargar CV</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- PROYECTOS DESTACADOS (PORTFOLIO - Comentado a petición)
+    <section aria-labelledby="heading-projects">
+      <h2 id="heading-projects" class="section-title">
+        <i data-lucide="folder-git-2" style="width: 14px; height: 14px;"></i>
+        Proyectos Destacados
+      </h2>
+      <div class="links-group">
+        
+        <a href="https://github.com/AndreaSantaloz/UlpgcFlix" target="_blank" rel="noopener noreferrer" class="link-card">
+          <div class="link-icon-container icon-portfolio" style="background: linear-gradient(135deg, #7c3aed, #4f46e5);">
+            <i data-lucide="smartphone" style="width: 22px; height: 22px;"></i>
+          </div>
+          <div class="link-text-group">
+            <div class="link-title">
+              UlpgcFlix • Red Social de Cine
+              <span class="link-tag">Kotlin • Firebase</span>
+            </div>
+            <div class="link-desc">App móvil interactiva con descubrimiento de películas y foros en tiempo real</div>
+          </div>
+          <i data-lucide="external-link" class="link-chevron" style="width: 18px; height: 18px;"></i>
+        </a>
+
+        <a href="https://github.com/efm092000/PIGS" target="_blank" rel="noopener noreferrer" class="link-card">
+          <div class="link-icon-container icon-portfolio" style="background: linear-gradient(135deg, #0284c7, #0369a1);">
+            <i data-lucide="layout" style="width: 22px; height: 22px;"></i>
+          </div>
+          <div class="link-text-group">
+            <div class="link-title">
+              Wiki de Cruceros
+              <span class="link-tag">Angular • Tailwind</span>
+            </div>
+            <div class="link-desc">Plataforma web para catalogación y gestión en tiempo real de embarcaciones</div>
+          </div>
+          <i data-lucide="external-link" class="link-chevron" style="width: 18px; height: 18px;"></i>
+        </a>
+
+        <a href="https://github.com/Hector-Wood-Santana-Dev/El-Nexo-PS" target="_blank" rel="noopener noreferrer" class="link-card">
+          <div class="link-icon-container icon-portfolio" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+            <i data-lucide="shopping-bag" style="width: 22px; height: 22px;"></i>
+          </div>
+          <div class="link-text-group">
+            <div class="link-title">
+              El Nexo • Tienda E-Commerce
+              <span class="link-tag">Angular • Firebase</span>
+            </div>
+            <div class="link-desc">E-commerce con catálogo dinámico y modelo de datos NoSQL</div>
+          </div>
+          <i data-lucide="external-link" class="link-chevron" style="width: 18px; height: 18px;"></i>
+        </a>
+
+        <a href="https://github.com/Itzhak04/FSI2" target="_blank" rel="noopener noreferrer" class="link-card">
+          <div class="link-icon-container icon-portfolio" style="background: linear-gradient(135deg, #10b981, #059669);">
+            <i data-lucide="cpu" style="width: 22px; height: 22px;"></i>
+          </div>
+          <div class="link-text-group">
+            <div class="link-title">
+              Clasificador CNN • Machine Learning
+              <span class="link-tag">Python • TensorFlow</span>
+            </div>
+            <div class="link-desc">Modelo de visión por computador para clasificación automática con alta precisión</div>
+          </div>
+          <i data-lucide="external-link" class="link-chevron" style="width: 18px; height: 18px;"></i>
+        </a>
+
+      </div>
+    </section>
+    -->
+
+    <!-- REDES & PRESENCIA DIGITAL -->
+    <section aria-labelledby="heading-social">
+      <h2 id="heading-social" class="section-title">
+        <i data-lucide="globe" style="width: 14px; height: 14px;"></i>
+        Redes & Comunidad
+      </h2>
+      <div class="links-group">
+        
+        <!-- GitHub (Comentado a petición)
+        <a href="https://github.com/Itzhak04" target="_blank" rel="noopener noreferrer" class="link-card">
+          <div class="link-icon-container icon-github">
+            <i data-lucide="github" style="width: 22px; height: 22px;"></i>
+          </div>
+          <div class="link-text-group">
+            <div class="link-title">GitHub</div>
+            <div class="link-desc">github.com/Itzhak04 • Código y proyectos</div>
+          </div>
+          <i data-lucide="chevron-right" class="link-chevron" style="width: 20px; height: 20px;"></i>
+        </a>
+        -->
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/itzhak-prieto-d%C3%A9niz-447b55381/" target="_blank" rel="noopener noreferrer" class="link-card">
+          <div class="link-icon-container icon-linkedin">
+            <i data-lucide="linkedin" style="width: 22px; height: 22px;"></i>
+          </div>
+          <div class="link-text-group">
+            <div class="link-title">LinkedIn</div>
+            <div class="link-desc">Perfil profesional y trayectoria laboral</div>
+          </div>
+          <i data-lucide="chevron-right" class="link-chevron" style="width: 20px; height: 20px;"></i>
+        </a>
+
+        <!-- Twitter / X (Comentado a petición)
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="link-card">
+          <div class="link-icon-container icon-twitter">
+            <i data-lucide="twitter" style="width: 22px; height: 22px;"></i>
+          </div>
+          <div class="link-text-group">
+            <div class="link-title">X (Twitter)</div>
+            <div class="link-desc">Artículos técnicos, reflexiones de diseño e ingeniería</div>
+          </div>
+          <i data-lucide="chevron-right" class="link-chevron" style="width: 20px; height: 20px;"></i>
+        </a>
+        -->
+
+      </div>
+    </section>
+
+    <!-- CONTACTO DIRECTO -->
+    <section aria-labelledby="heading-contact">
+      <h2 id="heading-contact" class="section-title">
+        <i data-lucide="send" style="width: 14px; height: 14px;"></i>
+        Contacto Directo
+      </h2>
+      <div class="links-group">
+        
+        <!-- Email Directo con función de copia rápida -->
+        <div class="link-card" id="emailCard" role="button" tabindex="0" title="Haz clic para enviar o copiar email">
+          <div class="link-icon-container icon-email">
+            <i data-lucide="mail" style="width: 22px; height: 22px;"></i>
+          </div>
+          <div class="link-text-group">
+            <div class="link-title">
+              Correo Electrónico
+              <span class="link-tag">Copiar</span>
+            </div>
+            <div class="link-desc" id="userEmailText">itzhakprieto@gmail.com</div>
+          </div>
+          <i data-lucide="copy" class="link-chevron" style="width: 18px; height: 18px;"></i>
+        </div>
+
+        <!-- WhatsApp (Comentado a petición)
+        <a href="https://wa.me/34600000000?text=Hola,%20vi%20tu%20perfil%20profesional%20y%20me%20gustar%C3%ADa%20conversar." target="_blank" rel="noopener noreferrer" class="link-card">
+          <div class="link-icon-container icon-whatsapp">
+            <i data-lucide="message-circle" style="width: 22px; height: 22px;"></i>
+          </div>
+          <div class="link-text-group">
+            <div class="link-title">WhatsApp</div>
+            <div class="link-desc">Mensaje instantáneo para propuestas directas</div>
+          </div>
+          <i data-lucide="chevron-right" class="link-chevron" style="width: 20px; height: 20px;"></i>
+        </a>
+        -->
+
+        <!-- Agendar Reunión (Comentado a petición)
+        <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" class="link-card">
+          <div class="link-icon-container icon-calendar">
+            <i data-lucide="calendar" style="width: 22px; height: 22px;"></i>
+          </div>
+          <div class="link-text-group">
+            <div class="link-title">Agendar Reunión (15 min)</div>
+            <div class="link-desc">Selecciona un hueco en mi calendario online</div>
+          </div>
+          <i data-lucide="chevron-right" class="link-chevron" style="width: 20px; height: 20px;"></i>
+        </a>
+        -->
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <button class="footer-pill" id="footerQrBtn">
+        <i data-lucide="qr-code" style="width: 15px; height: 15px;"></i>
+        <span>Generar Código QR de este Sitio</span>
+      </button>
+      <p class="footer-text">
+        <span>© 2026 Itzhak Prieto</span>
+        <span>•</span>
+        <span>Diseño Glassmorphism iOS</span>
+      </p>
+    </footer>
+
+  </main>
+
+  <!-- =============================================================
+       MODAL 1: CÓDIGO QR DINÁMICO
+  ============================================================= -->
+  <div class="modal-overlay" id="qrModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-sheet">
+      <div class="modal-handle-bar" id="qrModalHandle"></div>
+      
+      <div class="modal-header">
+        <h3 class="modal-title">Código QR Dinámico</h3>
+        <button class="modal-close-btn" id="closeQrModalBtn" aria-label="Cerrar ventana">
+          <i data-lucide="x" style="width: 18px; height: 18px;"></i>
+        </button>
+      </div>
+
+      <div class="qr-content-wrapper">
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.45;">
+          Escanea este código con la cámara de cualquier teléfono para acceder directamente a este perfil.
+        </p>
+
+        <!-- QR Display Canvas Container -->
+        <div class="qr-card-surface">
+          <div id="qrcode"></div>
+        </div>
+
+        <!-- URL actual mostrada -->
+        <div class="qr-url-badge">
+          <i data-lucide="link-2" style="width: 16px; height: 16px; flex-shrink: 0; color: var(--accent-teal);"></i>
+          <span class="qr-url-text" id="qrUrlLabel">Cargando URL...</span>
+        </div>
+
+        <!-- Input para personalizar URL al vuelo -->
+        <div class="qr-custom-input-group">
+          <label for="customUrlInput" class="qr-input-label">Personalizar URL del Código QR:</label>
+          <input 
+            type="url" 
+            id="customUrlInput" 
+            class="qr-input-field" 
+            placeholder="https://tudominio.com/perfil"
+          />
+        </div>
+
+        <!-- Botones de Acción para el QR -->
+        <div class="qr-action-buttons">
+          <button type="button" class="modal-btn modal-btn-secondary" id="copyUrlBtn">
+            <i data-lucide="copy" style="width: 16px; height: 16px;"></i>
+            <span>Copiar Enlace</span>
+          </button>
+          
+          <button type="button" class="modal-btn modal-btn-primary" id="downloadQrBtn">
+            <i data-lucide="download" style="width: 16px; height: 16px;"></i>
+            <span>Descargar QR</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================================================
+       MODAL 2: VISOR DE CV EN PDF
+  ============================================================= -->
+  <div class="modal-overlay" id="cvModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-sheet cv-modal-sheet">
+      <div class="modal-handle-bar" id="cvModalHandle"></div>
+      
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div class="cv-icon-box" style="width: 34px; height: 34px; border-radius: 9px;">
+            <i data-lucide="file-text" style="width: 18px; height: 18px;"></i>
+          </div>
+          <div>
+            <h3 class="modal-title" style="font-size: 1.1rem;">Visor de Curriculum</h3>
+            <span style="font-size: 0.75rem; color: var(--text-secondary);">Curriculum Vitae - Itzhak Prieto</span>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <a href="cv.pdf" target="_blank" rel="noopener noreferrer" class="modal-close-btn" title="Abrir en pestaña completa" aria-label="Abrir en pestaña nueva">
+            <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
+          </a>
+          <button class="modal-close-btn" id="closeCvModalBtn" aria-label="Cerrar visor">
+            <i data-lucide="x" style="width: 18px; height: 18px;"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Iframe contenedor de cv.pdf -->
+      <div class="cv-frame-container">
+        <iframe src="cv.pdf" class="cv-frame" title="Visor de PDF del Currículum"></iframe>
+        
+        <!-- Fallback notice en caso de que cv.pdf aún no haya sido colocado -->
+        <div class="cv-frame-fallback" id="cvFallbackNotice" style="display: none;">
+          <div class="cv-fallback-icon">
+            <i data-lucide="file-question" style="width: 28px; height: 28px;"></i>
+          </div>
+          <h4 style="font-size: 1.1rem; font-weight: 700;">Curriculum Vitae listo para visualizar</h4>
+          <p style="font-size: 0.86rem; color: var(--text-secondary); max-width: 360px;">
+            Documento vinculado directamente a <strong>Curriculum Vitae - Itzhak Prieto</strong>.
+          </p>
+          <a href="cv.pdf" target="_blank" class="modal-btn modal-btn-primary" style="margin-top: 6px;">
+            <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
+            <span>Abrir CV en pestaña nueva</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Footer del modal de CV -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; gap: 10px;">
+        <span style="font-size: 0.78rem; color: var(--text-tertiary);">Documento: Itzhak Prieto</span>
+        <a href="cv.pdf" download="Curriculum Vitae - Itzhak Prieto.pdf" class="modal-btn modal-btn-primary" style="padding: 9px 18px;">
+          <i data-lucide="download" style="width: 16px; height: 16px;"></i>
+          <span>Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================================================
+       TOAST NOTIFICATION COMPONENT
+  ============================================================= -->
+  <div class="toast-notification" id="toastNotice" role="status" aria-live="polite">
+    <i data-lucide="check-circle-2" style="width: 18px; height: 18px; color: var(--accent-green);"></i>
+    <span id="toastMessage">Acción completada</span>
+  </div>
+
+  <!-- =============================================================
+       CLIENT-SIDE JAVASCRIPT LOGIC
+  ============================================================= -->
+  <script src="function.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# Logs y cache del sistema
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
