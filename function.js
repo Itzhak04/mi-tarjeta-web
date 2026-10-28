@@ -58,16 +58,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const qrModalHandle = document.getElementById("qrModalHandle");
       const qrcodeContainer = document.getElementById("qrcode");
       const qrUrlLabel = document.getElementById("qrUrlLabel");
-      const customUrlInput = document.getElementById("customUrlInput");
       const copyUrlBtn = document.getElementById("copyUrlBtn");
       const downloadQrBtn = document.getElementById("downloadQrBtn");
 
       let qrCodeInstance = null;
 
-      // Determine initial URL for QR code
+      // Determine URL for QR code (points directly to this website)
       function getInitialPageUrl() {
         const href = window.location.href;
-        // If loaded via file:// protocol, give a clean demo URL or the file path
+        // If loaded via file:// protocol, give clean domain or location
         if (href.startsWith("file://")) {
           return "https://itzhakprieto.dev";
         }
@@ -95,13 +94,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (qrUrlLabel) qrUrlLabel.textContent = targetUrl;
-        if (customUrlInput && customUrlInput.value !== targetUrl) {
-          customUrlInput.value = targetUrl;
-        }
       }
 
       function openQrModal() {
-        const currentUrl = customUrlInput.value.trim() || getInitialPageUrl();
+        const currentUrl = getInitialPageUrl();
         generateQRCode(currentUrl);
         qrModal.classList.add("active");
         qrModal.setAttribute("aria-hidden", "false");
@@ -122,20 +118,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.target === qrModal) closeQrModal();
       });
 
-      // Update QR in real-time when typing a custom URL
-      if (customUrlInput) {
-        customUrlInput.addEventListener("input", (e) => {
-          const newUrl = e.target.value.trim();
-          if (newUrl.length > 3) {
-            generateQRCode(newUrl);
-          }
-        });
-      }
-
       // Action: Copy Web URL to clipboard
       if (copyUrlBtn) {
         copyUrlBtn.addEventListener("click", async () => {
-          const urlToCopy = customUrlInput.value.trim() || getInitialPageUrl();
+          const urlToCopy = getInitialPageUrl();
           try {
             await navigator.clipboard.writeText(urlToCopy);
             showToast("¡Enlace copiado al portapapeles!");
@@ -268,5 +254,5 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // Initial QR preload
-      customUrlInput.value = getInitialPageUrl();
+      generateQRCode(getInitialPageUrl());
     });

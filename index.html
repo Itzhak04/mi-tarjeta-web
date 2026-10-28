@@ -360,21 +360,10 @@
           <div id="qrcode"></div>
         </div>
 
-        <!-- URL actual mostrada -->
-        <div class="qr-url-badge">
+        <!-- URL actual mostrada (Solo lectura) -->
+        <div class="qr-url-badge" style="width: 100%; justify-content: center;">
           <i data-lucide="link-2" style="width: 16px; height: 16px; flex-shrink: 0; color: var(--accent-teal);"></i>
           <span class="qr-url-text" id="qrUrlLabel">Cargando URL...</span>
-        </div>
-
-        <!-- Input para personalizar URL al vuelo -->
-        <div class="qr-custom-input-group">
-          <label for="customUrlInput" class="qr-input-label">Personalizar URL del Código QR:</label>
-          <input 
-            type="url" 
-            id="customUrlInput" 
-            class="qr-input-field" 
-            placeholder="https://tudominio.com/perfil"
-          />
         </div>
 
         <!-- Botones de Acción para el QR -->
