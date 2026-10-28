@@ -97,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       function openQrModal() {
+        if (!qrModal) return;
         const currentUrl = getInitialPageUrl();
         generateQRCode(currentUrl);
         qrModal.classList.add("active");
@@ -104,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       function closeQrModal() {
+        if (!qrModal) return;
         qrModal.classList.remove("active");
         qrModal.setAttribute("aria-hidden", "true");
       }
@@ -114,9 +116,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (qrModalHandle) qrModalHandle.addEventListener("click", closeQrModal);
 
       // Close modal on click outside sheet
-      qrModal.addEventListener("click", (e) => {
-        if (e.target === qrModal) closeQrModal();
-      });
+      if (qrModal) {
+        qrModal.addEventListener("click", (e) => {
+          if (e.target === qrModal) closeQrModal();
+        });
+      }
 
       // Action: Copy Web URL to clipboard
       if (copyUrlBtn) {
@@ -233,12 +237,18 @@ document.addEventListener("DOMContentLoaded", () => {
               await navigator.share(shareData);
             } catch (err) {
               if (err.name !== "AbortError") {
-                openQrModal();
+                await navigator.clipboard.writeText(getInitialPageUrl());
+                showToast("¡Enlace del perfil copiado!");
               }
             }
           } else {
-            // Fallback: open QR sheet
-            openQrModal();
+            // Fallback: copy link directly to clipboard
+            try {
+              await navigator.clipboard.writeText(getInitialPageUrl());
+              showToast("¡Enlace del perfil copiado!");
+            } catch {
+              showToast("No se pudo copiar el enlace");
+            }
           }
         });
       }

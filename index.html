@@ -36,11 +36,12 @@
         <span>Disponible para proyectos</span>
       </div>
       <div class="top-actions">
-        <!-- QR Code Trigger -->
+        <!-- QR Code Trigger (Comentado a petición)
         <button class="icon-btn" id="openQrBtn" title="Mostrar código QR de este perfil" aria-label="Código QR">
           <i data-lucide="qr-code"></i>
         </button>
-        <!-- Share Native Trigger -->
+        -->
+        <!-- Share Native Trigger (Activo) -->
         <button class="icon-btn" id="shareProfileBtn" title="Compartir perfil" aria-label="Compartir perfil">
           <i data-lucide="share-2"></i>
         </button>
@@ -323,10 +324,12 @@
 
     <!-- FOOTER -->
     <footer class="footer">
+      <!-- Footer QR (Comentado a petición)
       <button class="footer-pill" id="footerQrBtn">
         <i data-lucide="qr-code" style="width: 15px; height: 15px;"></i>
         <span>Generar Código QR de este Sitio</span>
       </button>
+      -->
       <p class="footer-text">
         <span>© 2026 Itzhak Prieto</span>
         <span>•</span>
@@ -337,8 +340,9 @@
   </main>
 
   <!-- =============================================================
-       MODAL 1: CÓDIGO QR DINÁMICO
+       MODAL 1: CÓDIGO QR DINÁMICO (Comentado a petición)
   ============================================================= -->
+  <!--
   <div class="modal-overlay" id="qrModal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-sheet">
       <div class="modal-handle-bar" id="qrModalHandle"></div>
@@ -355,18 +359,15 @@
           Escanea este código con la cámara de cualquier teléfono para acceder directamente a este perfil.
         </p>
 
-        <!-- QR Display Canvas Container -->
         <div class="qr-card-surface">
           <div id="qrcode"></div>
         </div>
 
-        <!-- URL actual mostrada (Solo lectura) -->
         <div class="qr-url-badge" style="width: 100%; justify-content: center;">
           <i data-lucide="link-2" style="width: 16px; height: 16px; flex-shrink: 0; color: var(--accent-teal);"></i>
           <span class="qr-url-text" id="qrUrlLabel">Cargando URL...</span>
         </div>
 
-        <!-- Botones de Acción para el QR -->
         <div class="qr-action-buttons">
           <button type="button" class="modal-btn modal-btn-secondary" id="copyUrlBtn">
             <i data-lucide="copy" style="width: 16px; height: 16px;"></i>
@@ -381,6 +382,7 @@
       </div>
     </div>
   </div>
+  -->
 
   <!-- =============================================================
        MODAL 2: VISOR DE CV EN PDF
